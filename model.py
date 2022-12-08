@@ -51,7 +51,7 @@ class Model(object):
     @timing
     def init_data(self, dataset):
         labelY = dataset.Feature_Dict['labelY']
-        display(dataset.data_df[labelY].value_counts().to_frame())
+        #display(dataset.data_df[labelY].value_counts().to_frame())
         self.dataset_Tr = dataset.data_df[dataset.data_df['sar_flag']!=2]
         self.dataset_TsPub = dataset.data_df[dataset.data_df['sar_flag']==2]
         self.dataset_Tr.fillna(0, inplace=True)
@@ -132,7 +132,6 @@ class Model(object):
         print('hyperparameter combinations:',len(score_list_tmp))
         
     
-
     
     def get_recallN_Precision(self, y_predProb, y_true):
         y_pred_df = pd.DataFrame(list(zip(y_predProb, y_true)), columns=['predProb','trueLabel'])
